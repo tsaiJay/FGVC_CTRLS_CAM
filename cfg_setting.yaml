@@ -1,0 +1,55 @@
+############# basic setting #############
+project_name: 'Distill_CAM'
+wandb_entity: 'tjproject'
+use_wandb: True
+run_name: '29'               # null -> auto assign run name
+
+############# training setting #############
+epochs: 100
+batch_size: 16
+transform: '448v2'
+dataset: 'standog'             # cub200, standog, stancar, aircraft, nabird
+
+############# distill setting #############
+t_model: 'resnet50'
+s_model: 'resnet18'
+
+cm_args:                      # cam module setting
+  use_norm: True              # normalize hint map to (0, 1) 
+  use_batchnorm: True         # batchnorm
+  scale: 0.25
+  map_function: 'tanh'     # sigmoid, tanh
+
+T: 3                          # temperature for distillation
+loss_ratio:
+  alpha: 1
+  beta: 1
+  omega: 1
+
+############# optimizer setting #############
+optim:
+  type: 'SGD'
+  learning_rate: 0.001
+  weight_decay: 0.0001        # 0 -> no weight decay
+  momentum: 0.9               # 0 -> no momentum
+
+  # type: Adam
+  # learning_rate: 0.001
+  # weight_decay: 0.0001
+  # momentum: 0.9       
+
+scheduler:
+  type: 'StepLR'
+  sche_step: 30
+  gamma: 0.1
+
+  # type: 'CosAnnealLR'
+  # T_max: 300
+  # eta_min: 0
+
+############# log record setting #############
+wand_freq: 64              # upload wandb freq
+# eval_freq: 256           # 測試頻率
+# ckp_epochs: 20           # save checkpoint every _ epochs
+
+
