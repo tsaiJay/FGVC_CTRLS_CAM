@@ -5,11 +5,18 @@ In this paper, we focus on knowledge distillation specifically designed for fine
 
 ![framework](./imgs/structure.png)
 
-in this implementation
-also ditillation on other FGVC datasets, including cub200, nabird, stancar, standog, aircraft.
+## Experimental Result
+In this implementation, distillation is also applied to other FGVC datasets, including CUB200, NABird, Stanford Cars, Stanford Dogs, and Aircraft.
 
-accuracy table
-!!!!!!!!!!
+| Dataset   | ResNet18 Acc (%) | ResNet50 Acc (%) | Distillation Acc (%) | Improved Ratio (%) |
+|-----------|------------------|------------------|----------------------|--------------------|
+| CUB200    | 80.26            | 86.61            | 85.30                | +5.04              |
+| CAR       | 90.81            | 91.93            | 93.37                | +2.56              |
+| DOG       | 81.94            | 87.75            | 82.32                | +0.38              |
+| Aircraft  | 88.63            | 90.37            | 91.45                | +2.82              |
+| nabird    | 79.02            | 85.02            | 82.71                | +3.69              |
+
+## Training
 1. Sysyem
    - CPU： Intel(R) Core(TM) i9-9900K CPU @ 3.60GHz
    - GPU：NVIDIA GeForce RTX 2080 Ti 
@@ -26,9 +33,9 @@ accuracy table
    pip install tqdm
    ```
 3. Data Preparation
-
+   
 4. Training Teacher & Student model
-
+   
 5. Distillation
    ```
    python main.py --c cfg_setting.yaml
